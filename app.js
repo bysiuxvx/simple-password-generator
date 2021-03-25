@@ -29,6 +29,29 @@ const getChar = () => {
   console.log(finalPassword);
 };
 
+clipboard.addEventListener('click', () => {
+  const textarea = document.createElement('textarea');
+  const password = outputEl.innerText;
+
+  if (!password) {
+    return;
+  }
+
+  textarea.value = password;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  textarea.remove();
+  alert('Password copied to clipboard');
+});
+
 generateBtn.addEventListener('click', () => {
   getChar();
+});
+
+document.getElementById('github').addEventListener('click', () => {
+  window.open(
+    'https://github.com/bysiuxvx/simple-password-generator',
+    '_blank'
+  );
 });
